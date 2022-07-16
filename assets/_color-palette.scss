@@ -1,0 +1,27 @@
+$colorPaletteSettings: (
+
+//Primary
+  primary-blue: hsl(246, 80%, 60%),
+  primary-light-blue: hsl(195, 74%, 62%),
+  primary-light-red-work: hsl(15, 100%, 70%),
+  primary-light-red-study: hsl(348, 100%, 68%),
+  primary-lime-green: hsl(145, 58%, 55%),
+  primary-violet: hsl(264, 64%, 52%),
+  primary-orange: hsl(43, 84%, 65%),
+
+//Neutral
+  neutral-dark-blue: hsl(235, 46%, 20%),
+  neutral-xtra-dark-blue: hsl(226, 43%, 10%),
+  neutral-light-blue: hsl(235, 45%, 61%),
+  neutral-pale-blue: hsl(236, 100%, 87%)
+
+);
+
+@function colorPaletteSetting($key) {
+  @if map-has-key($colorPaletteSettings, $key) {
+    @return map-get($colorPaletteSettings, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $colorPaletteSettings.";
+  @return null;
+}

@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+
+$abstractSettings: (
+  primary_font: var(--primary_font, 'Rubik', sans-serif),
+);
+
+@function abstractSetting($key) {
+  @if map-has-key($abstractSettings, $key) {
+    @return map-get($abstractSettings, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $abstractSettings.";
+  @return null;
+}
