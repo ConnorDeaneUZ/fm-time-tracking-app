@@ -17,7 +17,7 @@
 
     <div class="profile-card-lower">
       <div class="profile-card-lower__info" v-for="(button, index) in activeButton" :key="button.value">
-        <a class="profile-card-lower__button" :class="{'button--active': activeState == index}" @click="showActiveState(index)">{{button.label}}</a>
+        <a class="profile-card-lower__button" :class="{'button--active': activeState == index}" @click="showActiveState(index, button.label)">{{button.label}}</a>
       </div>
     </div>
   </section>
@@ -72,8 +72,9 @@ export default {
 
     },
 
-    showActiveState(index) {
+    showActiveState(index, label) {
       this.activeState = index
+      this.$emit('timeframe', label)
     }
   }
 }
@@ -85,6 +86,11 @@ export default {
 
 .profile-card {
 font-family: abstractSetting(primary_font);
+
+  @media screen and (min-width: 800px ) {
+    margin-right: 20px;
+    margin-top: 70px;
+  }
 
   &-upper {
     display: flex;

@@ -1,18 +1,55 @@
 <template>
   <section class="container">
-    <profile-card />
+    <profile-card @timeframe="timeframeUpdate" />
+
+    <div class="trackers-wrapper">
+      <div class="trackers" v-for="card in timeData" :key="card.index">
+
+      <tracker-card v-if="timeframe == 'Daily'"
+      :title="card.title"
+      :hours="card.timeframes.daily.current"
+      :previous="card.timeframes.daily.previous" />
+
+      <tracker-card v-if="timeframe == 'Weekly'"
+      :title="card.title"
+      :hours="card.timeframes.weekly.current"
+      :previous="card.timeframes.weekly.previous" />
+
+      <tracker-card v-if="timeframe == 'Monthly'"
+      :title="card.title"
+      :hours="card.timeframes.monthly.current"
+      :previous="card.timeframes.monthly.previous" />
+
+    </div>
+    </div>
+
+
   </section>
 </template>
 
 <script>
 import ProfileCard from '~/components/global/ProfileCard.vue'
+import TrackerCard from '~/components/global/TrackerCard.vue'
+import data from '~/config/data.json'
 
 export default {
   name: 'IndexPage',
 
   components: { 
-    ProfileCard 
+    ProfileCard,
+    TrackerCard
   },
+
+  data:() => ({
+    timeData: data,
+    timeframe: null
+  }),
+
+  methods: {
+    timeframeUpdate(payload) {
+      this.timeframe = payload
+    }
+  }
 }
 </script>
 
@@ -28,9 +65,31 @@ body {
 .container {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 50vh;
+  height: auto;
   width: 100%;
   background-color: colorPaletteSetting(neutral-xtra-dark-blue);
+
+  @media screen and (min-width: 800px ) {
+    flex-direction: row;
+  }
+}
+
+.data {
+  color: white;
+}
+
+
+.trackers-wrapper {
+display: flex;
+flex-direction: column;
+
+  @media screen and (min-width: 1000px ) {
+    display: grid;
+    grid-template-columns: repeat(3,240px);  /* 3 columns */
+    grid-template-rows: repeat(2,240px); /* 3 rows  */
+    grid-gap:30px 30px; 
+  }
 }
 </style>
