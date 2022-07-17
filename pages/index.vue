@@ -8,17 +8,20 @@
       <tracker-card v-if="timeframe == 'Daily'"
       :title="card.title"
       :hours="card.timeframes.daily.current"
-      :previous="card.timeframes.daily.previous" />
+      :previous="card.timeframes.daily.previous"
+      :headerImage="card.image" />
 
       <tracker-card v-if="timeframe == 'Weekly'"
       :title="card.title"
       :hours="card.timeframes.weekly.current"
-      :previous="card.timeframes.weekly.previous" />
+      :previous="card.timeframes.weekly.previous"
+      :headerImage="card.image" />
 
       <tracker-card v-if="timeframe == 'Monthly'"
       :title="card.title"
       :hours="card.timeframes.monthly.current"
-      :previous="card.timeframes.monthly.previous" />
+      :previous="card.timeframes.monthly.previous"
+      :headerImage="card.image" />
 
     </div>
     </div>

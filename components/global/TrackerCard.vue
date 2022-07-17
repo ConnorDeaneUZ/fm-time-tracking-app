@@ -1,6 +1,8 @@
 <template>
   <section class="tracker-card">
-    <div class="tracker-card-upper"></div>
+    <div class="tracker-card-upper">
+      <img :src="headerImage" alt="">
+    </div>
     <div class="tracker-card-lower">
       <div class="tracker-card-lower__upper">
         <p class="tracker-card-lower__upper-title">{{title}}</p>
@@ -30,6 +32,10 @@ export default {
     previous: {
       type: String,
       required: true
+    },
+    headerImage: {
+      type: String,
+      required: true
     }
   }
 }
@@ -49,6 +55,8 @@ export default {
     background-color: green;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
+    display: flex;
+    justify-content: flex-end;
 
     @media screen and (min-width: 400px ) {
       width: 255px;
