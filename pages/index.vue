@@ -2,26 +2,29 @@
   <section class="container">
     <profile-card @timeframe="timeframeUpdate" />
 
-    <div class="trackers-wrapper">
+    <div class="trackers-wrapper" v-if="timeData">
       <div class="trackers" v-for="card in timeData" :key="card.index">
 
       <tracker-card v-if="timeframe == 'Daily'"
       :title="card.title"
       :hours="card.timeframes.daily.current"
       :previous="card.timeframes.daily.previous"
-      :headerImage="card.image" />
+      :headerImage="card.image"
+      :headerColor="card.color" />
 
       <tracker-card v-if="timeframe == 'Weekly'"
       :title="card.title"
       :hours="card.timeframes.weekly.current"
       :previous="card.timeframes.weekly.previous"
-      :headerImage="card.image" />
+      :headerImage="card.image"
+      :headerColor="card.color" />
 
       <tracker-card v-if="timeframe == 'Monthly'"
       :title="card.title"
       :hours="card.timeframes.monthly.current"
       :previous="card.timeframes.monthly.previous"
-      :headerImage="card.image" />
+      :headerImage="card.image"
+      :headerColor="card.color" />
 
     </div>
     </div>
@@ -45,7 +48,7 @@ export default {
 
   data:() => ({
     timeData: data,
-    timeframe: null
+    timeframe: 'Daily'
   }),
 
   methods: {
@@ -70,7 +73,7 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: auto;
+  height: 110vh;
   width: 100%;
   background-color: colorPaletteSetting(neutral-xtra-dark-blue);
 

@@ -1,6 +1,6 @@
 <template>
   <section class="tracker-card">
-    <div class="tracker-card-upper">
+    <div class="tracker-card-upper" :class="`tracker-card-upper-${headerColor}`">
       <img :src="headerImage" alt="">
     </div>
     <div class="tracker-card-lower">
@@ -34,6 +34,10 @@ export default {
       required: true
     },
     headerImage: {
+      type: String,
+      required: true
+    },
+    headerColor: {
       type: String,
       required: true
     }
@@ -120,5 +124,32 @@ export default {
 }
 .icon {
   height: 4px;
+}
+
+.tracker-card-upper {
+
+  &-orange {
+    background-color: colorPaletteSetting(primary-light-red-work)
+  }
+
+  &-blue {
+    background-color: colorPaletteSetting(primary-light-blue);
+  }
+
+  &-pink {
+    background-color: colorPaletteSetting(primary-light-red-study);
+  }
+
+  &-green {
+    background-color: colorPaletteSetting(primary-lime-green);
+  }
+
+  &-purple {
+    background-color: colorPaletteSetting(primary-violet);
+  }
+
+  &-yellow {
+    background-color: colorPaletteSetting(primary-orange);
+  }
 }
 </style>
