@@ -13,6 +13,7 @@
         <p class="tracker-card-lower__lower-previous">Last Week - {{previous}}hrs</p>
       </div>
     </div>
+
   </section>
 </template>
 
